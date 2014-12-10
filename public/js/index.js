@@ -27,7 +27,7 @@ var bitelabsPress = { time: { title: "Time Magazine", link: "http://newsfeed.tim
                       bloomberg: { title: "Bloomberg TV", link: "http://www.bloomberg.com/video/take-a-bite-out-of-an-oscar-winner-FrIlIic8SDO4~f_zBt~Gtw.html" },
                       slate: { title: "Slate Magazine", link: "http://www.slate.com/blogs/future_tense/2014/02/26/bite_labs_is_probably_a_prank_artisanal_salami_from_celebrity_tissue_samples.html" },
                       io9: { title: "io9", link: "http://io9.com/in-a-future-of-lab-grown-food-could-you-eat-meat-made-1532525928" },
-                      metro: { title: "link9", link: "http://www.metro.us/news/bitelabs-startup-plans-to-make-celebrity-flavored-meats-with-cell-samples/tmWnbA---49rIrHRPlHn7Q/" },
+                      metro: { title: "Metro", link: "http://www.metro.us/news/bitelabs-startup-plans-to-make-celebrity-flavored-meats-with-cell-samples/tmWnbA---49rIrHRPlHn7Q/" },
                       newharvest: { title: "New Harvest", link: "http://www.new-harvest.org/2014/02/this-company-wants-to-make-in-vitro-meat-from-celebrities-stem-cells-salon/" },
                       cnet: { title: "CNet", link: "http://www.cnet.com/news/lab-making-salami-out-of-jennifer-lawrence/" },
                       kotaku: { title: "Kotaku", link: "http://kotaku.com/a-possibly-fake-startup-is-proposing-we-eat-the-rich-1530628936" } };
@@ -61,7 +61,7 @@ $( document ).ready( function() {
     $( ".project" ).each( function() {
         $( this ).on( 'click', function() {
             $( this ).off( 'click' );
-            open( $( this ), $( this ).attr( "data-project" ) );
+            openAll( $( this ), $( this ).attr( "data-project" ) );
         });
     });
 
@@ -71,6 +71,19 @@ $( document ).ready( function() {
         $( ".text" ).width( $( window ).width() - 20 );
     });
 
+    // social
+    $( ".button.facebook" ).click( function() {
+        window.open( 'http://www.facebook.com/hellovelocity', '_blank' );
+    });
+    $( ".button.instagram" ).click( function() {
+        window.open( 'http://www.instagram.com/hellovelocity', '_blank' );
+    });
+    $( ".button.twitter" ).click( function() {
+        window.open( 'http://www.twitter.com/hellovelocity', '_blank' );
+    });
+    $( ".button.email" ).click( function() {
+        window.open( 'mailto:friend@hellovelocity.com', '_blank' );
+    });
 });
 
 // sticky cursor image
@@ -109,16 +122,23 @@ $(document).on('mousemove', function(e){
         });
     } else if( $( ".facebook" ).is( ":hover" ) ) {
         cursor.css( "font-size", "0.8em" );
-        cursor.show().html( "like our page!" ).css({
+        cursor.show().html( "like our page" ).css({
             width: "280px",
             height: "80px",
             color: "black",
             top: e.pageY - 60,
         });
-    } else if( $( ".instagram" ).is( ":hover" ) || 
-               $( ".twitter" ).is( ":hover" ) ) {
+    } else if( $( ".instagram" ).is( ":hover" ) ) {
         cursor.css( "font-size", "0.8em" );
-        cursor.show().html( "follow us!" ).css({
+        cursor.show().html( "follow us" ).css({
+            width: "280px",
+            height: "80px",
+            color: "black",
+            top: e.pageY - 60,
+        });
+    } else if( $( ".twitter" ).is( ":hover" )) {
+        cursor.css( "font-size", "0.8em" );
+        cursor.show().html( "tweet at us" ).css({
             width: "280px",
             height: "80px",
             color: "black",
@@ -148,7 +168,7 @@ function getPressObject( project ) {
     }
 };
 
-function open( el, project ) {
+function openAll( el, project ) {
     var pressList = stringifyPress( getPressObject( project ) );
     var color = el.parent().attr( "data-color" );
 
@@ -197,7 +217,7 @@ function closePress( el ) {
         el.remove();
         projectEl.on( 'click', function() { 
             $( this ).off( 'click' );
-            open( projectEl, project ); 
+            openAll( projectEl, project ); 
         });
     }
 };
