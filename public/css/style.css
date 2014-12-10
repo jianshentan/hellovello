@@ -75,6 +75,6 @@ body {
     width: 42px; height: 42px;
   }
   .cursor {
-    display: none;
+    display: none !important;
   }
 }
