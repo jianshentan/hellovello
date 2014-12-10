@@ -1,0 +1,81 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 3.0em;
+  padding: 0px;
+  margin: 0px;
+}
+.center {
+  margin: auto;
+  position: absolute;
+  height: 80px;
+  top: 50%; margin-top: -40px;
+  left: 0; right: 0;
+  text-align: center;
+  display: none;
+}
+.name {
+  position: relative;
+  font-size: 3.0em;
+  margin-bottom: 10px;
+}
+.text {
+  position: absolute;
+  margin: 0 auto;
+  text-align: left;
+  padding: 10px;
+}
+.logo {
+  background-color: black;
+  width: 60px; height: 60px;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  margin-right: 2px;
+}
+.project {
+  border-bottom: 4px solid black;
+  cursor: pointer;
+}
+.project[data-project='bitelabs']:hover {
+  cursor:url( "../media/bitelabs-icon.png" ), auto;
+}
+.project[data-project='genecoin']:hover {
+  cursor:url( "../media/genecoin-icon.png" ), auto;
+}
+.project[data-project='mcmass']:hover {
+  cursor:url( "../media/mcmass-icon.png" ), auto;
+}
+.press a {
+  color: inherit;
+  text-decoration: none;
+}
+.social {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  text-align: center;
+  width: 600px;
+  margin-left: -300px;
+  z-index: 100;
+}
+.social img {
+  margin: auto 20px;
+  width: 80px;
+  height: 80px;
+}
+@media only screen and (max-device-width: 480px) {
+  body {
+    font-size: 2.0em;
+  }
+  .text {
+    padding-bottom: 100px;
+  }
+  .social img {
+    margin: auto 10px;
+    width: 50px; height: 50px; 
+  }
+  .logo {
+    width: 42px; height: 42px;
+  }
+}
