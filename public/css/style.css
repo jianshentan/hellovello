@@ -24,6 +24,7 @@ body {
   margin: 0 auto;
   text-align: left;
   padding: 10px;
+  padding-bottom: 120px;
 }
 .logo {
   background-color: black;
@@ -65,9 +66,6 @@ body {
 @media only screen and (max-device-width: 480px) {
   body {
     font-size: 2.0em;
-  }
-  .text {
-    padding-bottom: 100px;
   }
   .social img {
     margin: auto 10px;
