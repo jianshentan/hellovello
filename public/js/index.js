@@ -71,8 +71,36 @@ $( document ).ready( function() {
         $( ".text" ).width( $( window ).width() - 20 );
     });
 
-    // sticky cursor image
+});
 
+// sticky cursor image
+$(document).on('mousemove', function(e){
+    var cursor = $( ".cursor" );
+    cursor.css({
+        left:  e.pageX + 5,
+        top:   e.pageY + 5
+    });
+    if( $( ".bitelabs" ).is( ":hover" ) ) {
+        cursor.show().css({
+            background: "url( 'media/bitelabs-icon.png' )",
+            width: "200px", 
+            height: "200px"
+        });
+    } else if( $( ".genecoin" ).is( ":hover" ) ) {
+        cursor.show().css({
+            background: "url( 'media/genecoin-icon.png' )",
+            width: "200px", 
+            height: "200px"
+        });
+    } else if( $( ".mcmass" ).is( ":hover" ) ) {
+        cursor.show().css({
+            background: "url( 'media/mcmass-icon.png' )",
+            width: "200px", 
+            height: "200px"
+        });
+    } else {
+        cursor.hide();
+    }
 });
 
 function getPressObject( project ) {
@@ -87,7 +115,6 @@ function getPressObject( project ) {
 };
 
 function open( el, project ) {
-    console.log( project );
     var pressList = stringifyPress( getPressObject( project ) );
     var color = el.parent().attr( "data-color" );
 
@@ -116,7 +143,7 @@ function openPress( projectEl, el, list, pressObject ) {
             el.append( list[0] );
             list = list.substring( 1, list.length );
             openPress( projectEl, el, list, pressObject );
-        }, 15);
+        }, 10);
     } else {
         linkifyPress( projectEl, el, pressObject );
     }
@@ -163,8 +190,16 @@ function linkifyPress( projectEl, el, pressObject ) {
     newText += "]";
     el.html( newText );
 
+    var color = el.parent().attr( "data-color" );
+    el.children( "a" ).each( function() {
+        $( this ).hover( function() {
+            $( this ).css( "border-bottom", "4px solid #"+color );
+        }, function() {
+            $( this ).css( "border-bottom", "" );
+        });
+    });
+
     // finished! (create new click event)
-    console.log( projectEl.attr( "data-project" ) );
     projectEl.on( 'click', function() { close( projectEl ); } )
 };
 
