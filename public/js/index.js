@@ -78,25 +78,59 @@ $(document).on('mousemove', function(e){
     var cursor = $( ".cursor" );
     cursor.css({
         left:  e.pageX + 5,
-        top:   e.pageY + 5
+        top:   e.pageY + 5,
+        background: "",
     });
     if( $( ".bitelabs" ).is( ":hover" ) ) {
-        cursor.show().css({
+        cursor.show().html("").css({
             background: "url( 'media/bitelabs-icon.png' )",
             width: "200px", 
             height: "200px"
         });
     } else if( $( ".genecoin" ).is( ":hover" ) ) {
-        cursor.show().css({
+        cursor.show().html("").css({
             background: "url( 'media/genecoin-icon.png' )",
             width: "200px", 
             height: "200px"
         });
     } else if( $( ".mcmass" ).is( ":hover" ) ) {
-        cursor.show().css({
+        cursor.show().html("").css({
             background: "url( 'media/mcmass-icon.png' )",
             width: "200px", 
             height: "200px"
+        });
+    } else if( $( ".logo" ).is( ":hover" ) ) {
+        cursor.css( "font-size", "1.4em" );
+        cursor.show().html( "!" ).css({
+            width: "30px",
+            height: "80px",
+            color: "black",
+            top: e.pageY - 60,
+        });
+    } else if( $( ".facebook" ).is( ":hover" ) ) {
+        cursor.css( "font-size", "0.8em" );
+        cursor.show().html( "like our page!" ).css({
+            width: "280px",
+            height: "80px",
+            color: "black",
+            top: e.pageY - 60,
+        });
+    } else if( $( ".instagram" ).is( ":hover" ) || 
+               $( ".twitter" ).is( ":hover" ) ) {
+        cursor.css( "font-size", "0.8em" );
+        cursor.show().html( "follow us!" ).css({
+            width: "280px",
+            height: "80px",
+            color: "black",
+            top: e.pageY - 60,
+        });
+    } else if( $( ".email" ).is( ":hover" ) ) {
+        cursor.css( "font-size", "0.8em" );
+        cursor.show().html( "contact us!" ).css({
+            width: "280px",
+            height: "80px",
+            color: "black",
+            top: e.pageY - 60,
         });
     } else {
         cursor.hide();
